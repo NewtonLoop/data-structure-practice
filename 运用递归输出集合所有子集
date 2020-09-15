@@ -1,0 +1,29 @@
+#include <iomanip>
+#include "string.h"
+#include <algorithm>
+#include <iostream>
+using namespace std;
+
+template<typename T>
+void f(T *a, int *flag, int n, int i)
+{
+    if(n==i){
+        for(int k=0;k<i;k++){
+            if(flag[k] == 1)
+                cout<<a[k];
+        }
+        cout<<endl;
+        return ;
+    }
+    flag[n]=0;
+    f(a, flag, n + 1, i);
+    flag[n]=1;
+    f(a, flag, n + 1, i);
+}
+
+int main()
+{
+    int flag[3];
+    char a[3]={'a','b','c'};
+    f(a,flag,0,3);
+}
